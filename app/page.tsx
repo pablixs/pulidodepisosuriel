@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { Nav } from '@/app/components/layout/Navbar'
-import { Content, Content2 } from '@/app/components/sections/Content';
+import  Content  from '@/app/components/sections/Content';
 import NuestrosServicios from '@/app/components/sections/NuestrosServicios';
 import ContactForm from '@/app/components/sections/ContactForm';
 import WhatsappBtn from '@/app/components/ui/WhatsappBtn';
