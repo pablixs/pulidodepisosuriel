@@ -3,17 +3,13 @@
 import { useState } from "react";
 import { Slide } from "@/app/components/ui/Slider";
 
-// ─── Tipos ────────────────────────────────────────────────────────────────────
-
 interface Servicio {
   id: number;
-  tag: string;         // etiqueta corta (ej: "01")
-  nombre: string;      // título del item en la lista
-  titulo: string;      // título grande en el panel derecho
-  descripcion: string; // texto descriptivo
+  tag: string;
+  nombre: string;
+  titulo: string;
+  descripcion: string;
 }
-
-// ─── Datos (editá acá tus servicios) ──────────────────────────────────────────
 
 const SERVICIOS: Servicio[] = [
   {
@@ -42,8 +38,6 @@ const SERVICIOS: Servicio[] = [
   },
 ];
 
-// ─── Componente ───────────────────────────────────────────────────────────────
-
 export default function NuestrosServicios() {
   const [activo, setActivo] = useState<Servicio>(SERVICIOS[0]);
   const [animando, setAnimando] = useState(false);
@@ -59,28 +53,15 @@ export default function NuestrosServicios() {
 
   return (
     <>
-      {/* ── Estilos ── */}
       <style>{`
-
-        :root {
-          --ns-bg:        #f7f5f2;
-          --ns-surface:   #eeebe6;
-          --ns-border:    #d8d2c8;
-          --ns-accent:    #fa9827;
-          --ns-accent2:   #9a6020;
-          --ns-text:      #1a1714;
-          --ns-muted:     #8a8078;
-          --ns-selected:  #ede6d8;
-        }
-
         .ns-wrap {
+          background: var(--color-bg);
           font-family: 'Barlow', sans-serif;
           padding: 6rem 0 7rem;
           position: relative;
           overflow: hidden;
         }
 
-        /* Textura de fondo sutil */
         .ns-wrap::before {
           content: '';
           position: absolute;
@@ -90,28 +71,16 @@ export default function NuestrosServicios() {
               0deg,
               transparent,
               transparent 39px,
-              rgba(0,0,0,0.018) 39px,
-              rgba(0,0,0,0.018) 40px
+              rgba(128,128,128,0.04) 39px,
+              rgba(128,128,128,0.04) 40px
             );
           pointer-events: none;
         }
 
-        /* ── Encabezado ── */
         .ns-header {
           text-align: center;
           margin-bottom: 6rem;
           position: relative;
-        }
-
-        .ns-eyebrow {
-          font-family: 'Barlow Condensed', sans-serif;
-          font-size: 0.75rem;
-          font-weight: 600;
-          letter-spacing: 0.35em;
-          color: var(--ns-accent);
-          text-transform: uppercase;
-          margin-bottom: 1rem;
-          display: block;
         }
 
         .ns-heading {
@@ -120,25 +89,23 @@ export default function NuestrosServicios() {
           font-weight: 600;
           line-height: 0.92;
           letter-spacing: -0.02em;
-          color: var(--ns-text);
+          color: var(--color-text);
           text-transform: uppercase;
           margin: 0;
         }
 
         .ns-heading span {
-          color: var(--ns-accent);
+          color: var(--color-accent);
           display: block;
         }
 
-        /* línea decorativa */
         .ns-header-line {
           width: 60px;
           height: 3px;
-          background: var(--ns-accent);
+          background: var(--color-accent);
           margin: 1.8rem auto 0;
         }
 
-        /* ── Layout principal ── */
         .ns-container {
           max-width: 1200px;
           margin: 0 auto;
@@ -151,24 +118,24 @@ export default function NuestrosServicios() {
 
         /* ── Lista izquierda ── */
         .ns-lista {
-          border-right: 1px solid var(--ns-border);
+          border-right: 1px solid var(--color-border);
           max-height: 520px;
           overflow-y: auto;
           scrollbar-width: thin;
-          scrollbar-color: var(--ns-accent) transparent;
+          scrollbar-color: var(--color-accent) transparent;
           position: relative;
           z-index: 1;
         }
 
         .ns-lista::-webkit-scrollbar { width: 3px; }
         .ns-lista::-webkit-scrollbar-track { background: transparent; }
-        .ns-lista::-webkit-scrollbar-thumb { background: var(--ns-accent); border-radius: 2px; }
+        .ns-lista::-webkit-scrollbar-thumb { background: var(--color-accent); border-radius: 2px; }
 
         .ns-item {
           display: flex;
           align-items: stretch;
           cursor: pointer;
-          border-bottom: 1px solid var(--ns-border);
+          border-bottom: 1px solid var(--color-border);
           background: transparent;
           transition: background 0.2s;
           position: relative;
@@ -181,21 +148,15 @@ export default function NuestrosServicios() {
           outline: none;
         }
 
-        .ns-item:hover { background: rgba(212,160,74,0.04); }
+        .ns-item:hover { background: var(--color-surface); }
+        .ns-item.activo { background: var(--color-surface); }
 
-        .ns-item.activo {
-          background: var(--ns-selected);
-        }
-
-        /* barra lateral de ítem activo */
         .ns-item.activo::before {
           content: '';
           position: absolute;
-          left: 0;
-          top: 0;
-          bottom: 0;
+          left: 0; top: 0; bottom: 0;
           width: 3px;
-          background: var(--ns-accent);
+          background: var(--color-accent);
         }
 
         .ns-item-tag {
@@ -203,7 +164,7 @@ export default function NuestrosServicios() {
           font-size: 0.7rem;
           font-weight: 700;
           letter-spacing: 0.1em;
-          color: var(--ns-muted);
+          color: var(--color-text-soft);
           width: 44px;
           min-width: 44px;
           display: flex;
@@ -212,7 +173,7 @@ export default function NuestrosServicios() {
           transition: color 0.2s;
         }
 
-        .ns-item.activo .ns-item-tag { color: var(--ns-accent); }
+        .ns-item.activo .ns-item-tag { color: var(--color-accent); }
 
         .ns-item-texto {
           padding: 1.4rem 1.2rem 1.4rem 0;
@@ -224,20 +185,19 @@ export default function NuestrosServicios() {
           font-size: 1.05rem;
           font-weight: 700;
           letter-spacing: 0.02em;
-          color: var(--ns-muted);
+          color: var(--color-text-soft);
           text-transform: uppercase;
           line-height: 1.2;
           transition: color 0.2s;
         }
 
-        .ns-item.activo .ns-item-nombre { color: var(--ns-text); }
+        .ns-item.activo .ns-item-nombre { color: var(--color-text); }
 
-        /* flecha */
         .ns-item-arrow {
           display: flex;
           align-items: center;
           padding-right: 1rem;
-          color: var(--ns-accent);
+          color: var(--color-accent);
           opacity: 0;
           transition: opacity 0.2s, transform 0.2s;
           font-size: 1.1rem;
@@ -262,13 +222,12 @@ export default function NuestrosServicios() {
           gap: 1.8rem;
         }
 
-        /* etiqueta del servicio activo */
         .ns-panel-tag {
           font-family: 'Barlow Condensed', sans-serif;
           font-size: 0.7rem;
           font-weight: 700;
           letter-spacing: 0.35em;
-          color: var(--ns-accent);
+          color: var(--color-accent);
           text-transform: uppercase;
           display: flex;
           align-items: center;
@@ -280,7 +239,7 @@ export default function NuestrosServicios() {
           flex: 1;
           max-width: 40px;
           height: 1px;
-          background: var(--ns-accent);
+          background: var(--color-accent);
           opacity: 0.5;
         }
 
@@ -290,7 +249,7 @@ export default function NuestrosServicios() {
           font-weight: 900;
           letter-spacing: -0.01em;
           text-transform: uppercase;
-          color: var(--ns-text);
+          color: var(--color-text);
           line-height: 1.05;
           margin: 0;
         }
@@ -298,16 +257,16 @@ export default function NuestrosServicios() {
         .ns-panel-desc {
           font-size: 0.975rem;
           line-height: 1.75;
-          color: #6b6058;
+          color: var(--color-text-muted);
           max-width: 560px;
           margin: 0;
         }
 
-        /* ── Espacio del slider ── */
+        /* ── Slider ── */
         .ns-slider-wrapper {
           position: relative;
-          background: var(--ns-surface);
-          border: 1px solid var(--ns-border);
+          background: var(--color-surface);
+          border: 1px solid var(--color-border);
           border-radius: 2px;
           aspect-ratio: 16 / 7;
           overflow: hidden;
@@ -316,39 +275,13 @@ export default function NuestrosServicios() {
           justify-content: center;
         }
 
-        /* placeholder visual mientras no hay slider */
-        .ns-slider-placeholder {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 0.75rem;
-          color: var(--ns-muted);
-          pointer-events: none;
-          user-select: none;
-        }
-
-        .ns-slider-icon {
-          width: 48px;
-          height: 48px;
-          opacity: 0.25;
-        }
-
-        .ns-slider-label {
-          font-family: 'Barlow Condensed', sans-serif;
-          font-size: 0.75rem;
-          letter-spacing: 0.2em;
-          text-transform: uppercase;
-          opacity: 0.3;
-        }
-
-        /* esquinas decorativas del slider */
         .ns-slider-wrapper::before,
         .ns-slider-wrapper::after {
           content: '';
           position: absolute;
           width: 20px;
           height: 20px;
-          border-color: var(--ns-accent);
+          border-color: var(--color-accent);
           border-style: solid;
           opacity: 0.4;
           z-index: 2;
@@ -356,7 +289,6 @@ export default function NuestrosServicios() {
         .ns-slider-wrapper::before { top: 10px; left: 10px; border-width: 2px 0 0 2px; }
         .ns-slider-wrapper::after  { bottom: 10px; right: 10px; border-width: 0 2px 2px 0; }
 
-        /* slot real del slider (el que insertás vos) */
         .ns-slider-slot {
           position: absolute;
           inset: 0;
@@ -365,9 +297,7 @@ export default function NuestrosServicios() {
 
         /* ── Responsive ── */
         @media (max-width: 900px) {
-          .ns-container {
-            grid-template-columns: 1fr;
-          }
+          .ns-container { grid-template-columns: 1fr; }
 
           .ns-lista {
             display: flex;
@@ -376,38 +306,28 @@ export default function NuestrosServicios() {
             overflow-x: auto;
             overflow-y: hidden;
             border-right: none;
-            border-bottom: 1px solid var(--ns-border);
-            scrollbar-width: thin;
-            scrollbar-color: var(--ns-accent) transparent;
+            border-bottom: 1px solid var(--color-border);
             gap: 0;
-            padding-bottom: 0;
           }
 
           .ns-item {
             flex-direction: column;
             min-width: 160px;
             border-bottom: none;
-            border-right: 1px solid var(--ns-border);
+            border-right: 1px solid var(--color-border);
             padding: 0;
             justify-content: flex-start;
           }
 
           .ns-item.activo::before {
-            top: auto;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            width: auto;
-            height: 3px;
+            top: auto; bottom: 0; left: 0; right: 0;
+            width: auto; height: 3px;
           }
 
           .ns-item-tag { padding: 1rem 1rem 0.3rem; }
           .ns-item-texto { padding: 0 1rem 1rem; }
           .ns-item-arrow { display: none; }
-
-          .ns-panel {
-            padding: 2rem 0 0;
-          }
+          .ns-panel { padding: 2rem 0 0; }
         }
 
         @media (max-width: 560px) {
@@ -419,9 +339,7 @@ export default function NuestrosServicios() {
         }
       `}</style>
 
-      {/* ── Sección ── */}
       <section className="ns-wrap">
-        {/* Encabezado */}
         <div className="ns-header">
           <h2 className="ns-heading">
             Nuestros
@@ -430,10 +348,7 @@ export default function NuestrosServicios() {
           <div className="ns-header-line" />
         </div>
 
-        {/* Layout */}
         <div className="ns-container">
-
-          {/* Lista izquierda */}
           <nav className="ns-lista" aria-label="Servicios">
             {SERVICIOS.map((s) => (
               <button
@@ -451,40 +366,17 @@ export default function NuestrosServicios() {
             ))}
           </nav>
 
-          {/* Panel derecho */}
           <div className={`ns-panel${animando ? " saliendo" : ""}`}>
             <div className="ns-panel-inner">
-
               <span className="ns-panel-tag">Servicio {activo.tag}</span>
-
               <h3 className="ns-panel-titulo">{activo.titulo}</h3>
-
               <p className="ns-panel-desc">{activo.descripcion}</p>
 
-              {/* Espacio del slider — insertá tu componente dentro de .ns-slider-slot */}
               <div className="ns-slider-wrapper">
-
-                {/*
-                  ╔══════════════════════════════════════════════════╗
-                  ║  INSERTÁ TU SLIDER AQUÍ dentro del div de abajo  ║
-                  ║  El div ocupa todo el espacio del recuadro.      ║
-                  ╚══════════════════════════════════════════════════╝
-                */}
                 <div className="ns-slider-slot">
-                  <Slide/>
+                  <Slide />
                 </div>
-
-                {/* Placeholder visual (podés eliminar esto cuando tengas el slider) */}
-                {/* <div className="ns-slider-placeholder">
-                  <svg className="ns-slider-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <rect x="4" y="10" width="40" height="28" rx="2"/>
-                    <path d="M4 20l10-6 8 5 8-8 14 9"/>
-                    <circle cx="14" cy="18" r="3"/>
-                  </svg>
-                  <span className="ns-slider-label">Galería de trabajos</span>
-                </div> */}
               </div>
-
             </div>
           </div>
         </div>

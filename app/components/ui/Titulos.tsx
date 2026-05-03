@@ -29,8 +29,7 @@ export default function Titulos({
         </span>
       )}
       <h2
-        className="font-barlow-condensed font-black uppercase leading-[0.92] tracking-tight text-[#1a1714]"
-        style={{ fontSize: "clamp(3.2rem, 8vw, 6.5rem)" }}
+        className="font-barlow-condensed text-3xl sm:text-5xl md:text-7xl font-black uppercase leading-[0.92] tracking-tight text-[#1a1714]"
       >
         {lineOne}
         <span className={`${color.text} block`}>{lineTwo}</span>
