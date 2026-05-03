@@ -5,15 +5,17 @@ import { Nav } from '@/app/components/layout/Navbar'
 import { Content, Content2 } from '@/app/components/sections/Content';
 import NuestrosServicios from '@/app/components/sections/NuestrosServicios';
 import ContactForm from './components/sections/ContactForm';
+import WhatsappBtn from '@/app/components/ui/WhatsappBtn';
+
 
 export default function Home() {
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <main className='bg-white'>
+    <main className='bg-white '>
 
-      <div className="bg-center bg-cover" style={{ backgroundImage: `url(industrialmain.jpeg)` }}>
+      <div className="bg-center bg-cover " style={{ backgroundImage: `url(industrialmain.jpeg)` }} >
         <header className="absolute inset-x-0 top-0 z-50">
           <Nav />
         </header>
@@ -43,7 +45,7 @@ export default function Home() {
       <Content2/>
 
       <ContactForm/>
-      
+      <WhatsappBtn />
     </main>
 
   )

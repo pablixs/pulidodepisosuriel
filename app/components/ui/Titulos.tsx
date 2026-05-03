@@ -1,6 +1,6 @@
 interface SectionHeadingProps {
   eyebrow?: string;
-  lineOne: string;
+  lineOne?: string;
   lineTwo: string;
   acento?: "dorado" | "piedra" | "oxido";
 }
