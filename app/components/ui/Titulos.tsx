@@ -6,10 +6,10 @@ interface SectionHeadingProps {
 }
 
 const acentos = {
-  dorado: { text: "text-[#fa9827]", bg: "bg-[#fa9827]" },
-  piedra: { text: "text-[#7a8c7e]", bg: "bg-[#7a8c7e]" },
-  oxido:  { text: "text-[#a85c3a]", bg: "bg-[#a85c3a]" },
-};
+  dorado: { text: "text-[var(--color-accent3)]", bg: "bg-[var(--color-accent3)]" },
+  piedra: { text: "text-[var(--color-accent-piedra)]", bg: "bg-[var(--color-accent-piedra)]" },
+  oxido:  { text: "text-[var(--color-accent-oxido)]", bg: "bg-[var(--color-accent-oxido)]" },
+} as const;
 
 export default function Titulos({
   eyebrow,
@@ -29,7 +29,7 @@ export default function Titulos({
         </span>
       )}
       <h2
-        className="font-barlow-condensed text-3xl sm:text-5xl md:text-7xl font-black uppercase leading-[0.92] tracking-tight text-[#1a1714]"
+        className="font-barlow-condensed text-3xl sm:text-5xl md:text-7xl font-black uppercase leading-[0.92] tracking-tight text-[var(--color-text)]"
       >
         {lineOne}
         <span className={`${color.text} block`}>{lineTwo}</span>

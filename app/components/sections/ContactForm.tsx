@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Titulos from "@/app/components/ui/Titulos";
+import Reveal from "@/app/components/ui/Reveal";
 
 type TipoCliente = "particular" | "empresa";
 type Zona = "caba" | "gba" | "";
@@ -26,7 +26,7 @@ type FormData = FormParticular | FormEmpresa;
 
 const SERVICIOS = [
   "Pulido y Plastificado", "Hidrolaqueado", "Vitrificado / Termovitrificado",
-  "Restauración de Pisos", "Tratamiento Ignífugo", "Otro",
+  "Restauración de Pisos", "Pulido de Mármol", "Pulido de Hormigón", "Otro",
 ];
 
 const LOCALIDADES_CABA = [
@@ -52,7 +52,7 @@ const LOCALIDADES_GBA = [
 
 const COMO_NOS_CONOCIO = [
   "Google", "Instagram / Facebook", "Recomendación",
-  "Cartel / Via pública", "Ya éramos clientes", "Otro",
+  "Cartel / Vía pública", "Ya éramos clientes", "Otro",
 ];
 
 const initParticular = (): FormParticular => ({
@@ -125,41 +125,60 @@ export default function ContactForm() {
 
   if (enviado) {
     return (
-      <>
-        <Style />
-        <section className="cf-wrap sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-          <div className="cf-success">
-            <div className="cf-success-icon">✓</div>
-            <h3 className="cf-success-title">¡Información enviada!</h3>
-            <p className="cf-success-text">Nos ponemos en contacto contigo a la brevedad.</p>
-            <button className="cf-btn" onClick={() => {
-              setEnviado(false);
-              setForm(tipoCliente === "particular" ? initParticular() : initEmpresa());
-            }}>
-              Enviar otra consulta
-            </button>
-          </div>
-        </section>
-      </>
+      <section id="contacto" className="cf-section">
+        <div className="cf-inner">
+          <Reveal>
+            <div className="cf-success">
+              <div className="cf-success-icon">✓</div>
+              <h3 className="cf-success-title">¡Información enviada!</h3>
+              <p className="cf-success-text">
+                Nos comunicamos a la brevedad. Mientras tanto, podés ver 
+                nuestros trabajos en la galería.
+              </p>
+              <button className="cf-btn" onClick={() => {
+                setEnviado(false);
+                setForm(tipoCliente === "particular" ? initParticular() : initEmpresa());
+              }}>
+                Enviar otra consulta
+              </button>
+            </div>
+          </Reveal>
+        </div>
+      </section>
     );
   }
 
   return (
-    <>
-      <Style />
-      <section className="cf-wrap sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+    <section id="contacto" className="cf-section">
+      <div className="cf-inner">
+        <Reveal>
+          <div className="cf-header">
+            <span className="section-eyebrow">Contacto</span>
+            <h2 className="section-title">
+              Solicitar<br />
+              <span>presupuesto</span>
+            </h2>
+          </div>
+        </Reveal>
 
-        <Titulos eyebrow="Solicitá tu presupuesto" lineTwo="Contactanos" />
-
-        <div className="cf-toggle">
-          <button className={`cf-toggle-btn${tipoCliente === "particular" ? " activo" : ""}`}
-            onClick={() => handleTipoCliente("particular")}>Particular</button>
-          <button className={`cf-toggle-btn${tipoCliente === "empresa" ? " activo" : ""}`}
-            onClick={() => handleTipoCliente("empresa")}>Empresa</button>
-        </div>
+        <Reveal delay={100}>
+          <div className="cf-toggle">
+            <button
+              className={`cf-toggle-btn${tipoCliente === "particular" ? " activo" : ""}`}
+              onClick={() => handleTipoCliente("particular")}
+            >
+              Particular
+            </button>
+            <button
+              className={`cf-toggle-btn${tipoCliente === "empresa" ? " activo" : ""}`}
+              onClick={() => handleTipoCliente("empresa")}
+            >
+              Empresa
+            </button>
+          </div>
+        </Reveal>
 
         <div className="cf-grid">
-
           {form.tipo === "particular" && (
             <>
               <Field label="Nombre" error={errors.nombre} required>
@@ -260,19 +279,19 @@ export default function ContactForm() {
               ))}
             </div>
           </Field>
-
         </div>
 
-        <p className="cf-nota">* Campos obligatorios</p>
+        <Reveal delay={200}>
+          <p className="cf-nota">* Campos obligatorios</p>
 
-        <div className="cf-footer">
-          <button className="cf-btn" onClick={handleSubmit} disabled={enviando}>
-            {enviando ? <span className="cf-spinner" /> : <>Enviar información de contacto →</>}
-          </button>
-        </div>
-
-      </section>
-    </>
+          <div className="cf-footer">
+            <button className="cf-btn" onClick={handleSubmit} disabled={enviando}>
+              {enviando ? <span className="cf-spinner" /> : <>Enviar consulta →</>}
+            </button>
+          </div>
+        </Reveal>
+      </div>
+    </section>
   );
 }
 
@@ -290,307 +309,5 @@ function Field({ label, hint, error, required, className = "", children }: {
       {children}
       {error && <span className="cf-error">{error}</span>}
     </div>
-  );
-}
-
-function Style() {
-  return (
-    <style>{`
-      .cf-wrap {
-        background: var(--color-bg);
-        padding: 3rem 2rem 4rem;
-        margin: 0 auto;
-        position: relative;
-      }
-
-      /* ── Toggle ── */
-      .cf-toggle {
-        display: inline-flex;
-        background: var(--color-surface);
-        border: 1px solid var(--color-border);
-        border-radius: 2px;
-        padding: 3px;
-        margin-bottom: 2.5rem;
-        gap: 2px;
-      }
-
-      .cf-toggle-btn {
-        font-family: var(--font-barlow-condensed), 'Barlow Condensed', sans-serif;
-        font-size: 0.8rem;
-        font-weight: 700;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        padding: 0.55rem 1.6rem;
-        border: none;
-        background: transparent;
-        color: var(--color-text-soft);
-        cursor: pointer;
-        border-radius: 1px;
-        transition: background 0.18s, color 0.18s;
-      }
-
-      .cf-toggle-btn.activo {
-        background: var(--color-accent);
-        color: #fff;
-      }
-
-      /* ── Grid ── */
-      .cf-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1.5rem 2rem;
-      }
-
-      .cf-full { grid-column: 1 / -1; }
-
-      /* ── Field ── */
-      .cf-field {
-        display: flex;
-        flex-direction: column;
-        gap: 0.45rem;
-      }
-
-      .cf-label {
-        font-family: var(--font-barlow-condensed), 'Barlow Condensed', sans-serif;
-        font-size: 0.72rem;
-        font-weight: 700;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: var(--color-text-muted);
-      }
-
-      .cf-required { color: var(--color-accent); }
-
-      .cf-hint {
-        font-weight: 400;
-        letter-spacing: 0.05em;
-        color: var(--color-text-soft);
-        text-transform: none;
-      }
-
-      .cf-error {
-        font-size: 0.75rem;
-        color: #e05c4b;
-        font-family: var(--font-barlow), 'Barlow', sans-serif;
-      }
-
-      /* ── Inputs ── */
-      .cf-input {
-        width: 100%;
-        background: var(--color-input-bg);
-        border: 1px solid var(--color-border);
-        border-radius: 2px;
-        padding: 0.7rem 0.9rem;
-        font-family: var(--font-barlow), 'Barlow', sans-serif;
-        font-size: 0.9rem;
-        color: var(--color-text);
-        outline: none;
-        transition: border-color 0.18s, box-shadow 0.18s;
-        box-sizing: border-box;
-      }
-
-      .cf-input::placeholder { color: var(--color-text-soft); }
-
-      .cf-input:focus {
-        border-color: var(--color-accent);
-        box-shadow: 0 0 0 3px rgba(201,138,58,0.15);
-      }
-
-      /* Input con sufijo m² */
-      .cf-input-suffix {
-        position: relative;
-        display: flex;
-        align-items: center;
-      }
-
-      .cf-input-suffix .cf-input { padding-right: 3rem; }
-
-      .cf-suffix {
-        position: absolute;
-        right: 0.9rem;
-        font-family: var(--font-barlow-condensed), 'Barlow Condensed', sans-serif;
-        font-size: 0.8rem;
-        font-weight: 700;
-        color: var(--color-text-soft);
-        pointer-events: none;
-      }
-
-      /* ── Select ── */
-      .cf-select {
-        width: 100%;
-        background: var(--color-input-bg);
-        border: 1px solid var(--color-border);
-        border-radius: 2px;
-        padding: 0.7rem 0.9rem;
-        font-family: var(--font-barlow), 'Barlow', sans-serif;
-        font-size: 0.9rem;
-        color: var(--color-text);
-        outline: none;
-        appearance: none;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a6e62' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        background-position: right 0.9rem center;
-        padding-right: 2.5rem;
-        cursor: pointer;
-        transition: border-color 0.18s, box-shadow 0.18s;
-        box-sizing: border-box;
-      }
-
-      .cf-select:focus {
-        border-color: var(--color-accent);
-        box-shadow: 0 0 0 3px rgba(201,138,58,0.15);
-      }
-
-      .cf-select:disabled {
-        background-color: var(--color-surface);
-        color: var(--color-text-soft);
-        cursor: not-allowed;
-        opacity: 0.6;
-      }
-
-      /* opciones del select en dark */
-      .cf-select option {
-        background: var(--color-input-bg);
-        color: var(--color-text);
-      }
-
-      /* ── Chips ── */
-      .cf-chips {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-      }
-
-      .cf-chip {
-        font-family: var(--font-barlow-condensed), 'Barlow Condensed', sans-serif;
-        font-size: 0.78rem;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        padding: 0.4rem 0.9rem;
-        border: 1px solid var(--color-border);
-        border-radius: 2px;
-        background: var(--color-chip-bg);
-        color: var(--color-text-muted);
-        cursor: pointer;
-        transition: all 0.15s;
-        white-space: nowrap;
-      }
-
-      .cf-chip:hover {
-        border-color: var(--color-accent);
-        color: var(--color-accent);
-      }
-
-      .cf-chip.activo {
-        background: var(--color-accent);
-        border-color: var(--color-accent);
-        color: #fff;
-      }
-
-      /* ── Nota ── */
-      .cf-nota {
-        font-size: 0.75rem;
-        color: var(--color-text-soft);
-        margin: 1.5rem 0 0;
-        font-family: var(--font-barlow), 'Barlow', sans-serif;
-      }
-
-      /* ── Footer ── */
-      .cf-footer {
-        margin-top: 2rem;
-        display: flex;
-        justify-content: flex-end;
-      }
-
-      /* ── Botón ── */
-      .cf-btn {
-        font-family: var(--font-barlow-condensed), 'Barlow Condensed', sans-serif;
-        font-size: 0.85rem;
-        font-weight: 700;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        padding: 0.85rem 2.2rem;
-        background: var(--color-text);
-        color: var(--color-bg);
-        border: none;
-        border-radius: 2px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        transition: background 0.18s, transform 0.12s;
-        min-width: 220px;
-        justify-content: center;
-      }
-
-      .cf-btn:hover:not(:disabled) { background: var(--color-accent); color: #fff; }
-      .cf-btn:active:not(:disabled) { transform: scale(0.98); }
-      .cf-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-
-      /* Spinner */
-      .cf-spinner {
-        width: 16px;
-        height: 16px;
-        border: 2px solid rgba(255,255,255,0.2);
-        border-top-color: #fff;
-        border-radius: 50%;
-        animation: cf-spin 0.7s linear infinite;
-        display: inline-block;
-      }
-
-      @keyframes cf-spin { to { transform: rotate(360deg); } }
-
-      /* ── Éxito ── */
-      .cf-success {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 4rem 2rem;
-        gap: 1.2rem;
-      }
-
-      .cf-success-icon {
-        width: 56px;
-        height: 56px;
-        border-radius: 50%;
-        background: var(--color-accent);
-        color: #fff;
-        font-size: 1.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: var(--font-barlow-condensed), 'Barlow Condensed', sans-serif;
-        font-weight: 900;
-      }
-
-      .cf-success-title {
-        font-family: var(--font-barlow-condensed), 'Barlow Condensed', sans-serif;
-        font-size: 2rem;
-        font-weight: 900;
-        text-transform: uppercase;
-        color: var(--color-text);
-        margin: 0;
-      }
-
-      .cf-success-text {
-        color: var(--color-text-muted);
-        font-size: 0.95rem;
-        max-width: 400px;
-        line-height: 1.65;
-        margin: 0;
-        font-family: var(--font-barlow), 'Barlow', sans-serif;
-      }
-
-      /* ── Responsive ── */
-      @media (max-width: 600px) {
-        .cf-wrap { padding: 2rem 1.2rem 3rem; }
-        .cf-grid { grid-template-columns: 1fr; }
-        .cf-full { grid-column: 1; }
-        .cf-footer { justify-content: stretch; }
-        .cf-btn { width: 100%; }
-      }
-    `}</style>
   );
 }
