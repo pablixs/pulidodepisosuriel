@@ -77,6 +77,14 @@ export default function Gallery() {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
   const [categoria, setCategoria] = useState<Categoria>("todos");
 
+  const handleCategoria = (cat: Categoria) => {
+    setCategoria(cat);
+    if (thumbsSwiper && !thumbsSwiper.destroyed) {
+      thumbsSwiper.destroy(true, true);
+    }
+    setThumbsSwiper(null);
+  };
+
   const filtered = categoria === "todos"
     ? GALLERY_ALL
     : GALLERY_ALL.filter((img) => img.categoria === categoria);
@@ -100,7 +108,7 @@ export default function Gallery() {
               <button
                 key={cat.id}
                 className={`gallery-filter${categoria === cat.id ? " active" : ""}`}
-                onClick={() => setCategoria(cat.id)}
+                onClick={() => handleCategoria(cat.id)}
               >
                 <span className="gallery-filter-icon">{cat.icon}</span>
                 <span className="gallery-filter-label">{cat.label}</span>
@@ -111,7 +119,7 @@ export default function Gallery() {
       </div>
 
       <Reveal delay={200}>
-        <div className="gallery-swiper">
+        <div className="gallery-swiper" key={categoria}>
           <Swiper
             className="gallery-main"
             loop={true}

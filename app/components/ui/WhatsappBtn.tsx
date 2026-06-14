@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function WhatsappBtn() {
   return (
-    <div className="fixed bottom-5 right-5 md:bottom-10 md:right-10 z-50 transition-transform hover:translate-y-3">
+    <div className="fixed bottom-5 right-5 md:bottom-10 md:right-10 z-50 transition-transform hover:-translate-y-1">
       <a
         href="https://wa.me/5511999999999"
         className="flex group relative"
