@@ -17,8 +17,8 @@ const SERVICIOS: Servicio[] = [
   {
     id: 1,
     tag: "01",
-    nombre: "Pulido y Plastificado",
-    titulo: "Pulido y Plastificado de Pisos",
+    nombre: "Plastificado e hidrolaqueado",
+    titulo: "Plastificado e hidrolaqueado de Pisos",
     descripcion:
       "El proceso de pulido elimina rayones, barnices viejos e imperfecciones, dejando la superficie perfectamente nivelada. Luego aplicamos plastificado de alta durabilidad que protege y embellece el piso por años. Ideal tanto para hogares como para locales comerciales.",
     features: [
@@ -28,13 +28,13 @@ const SERVICIOS: Servicio[] = [
       "Acabado brillante o semimate",
       "Protección antihumedad",
     ],
-    imagen: "/img1.webp",
+    imagen: "/hidrolaqueado/hidrolaqueado-img1.webp",
   },
   {
     id: 2,
     tag: "02",
-    nombre: "Hidrolaqueado",
-    titulo: "Hidrolaqueado de Pisos",
+    nombre: "Mármol y mosaicos",
+    titulo: "Mármol y mosaicos",
     descripcion:
       "Alternativa ecológica al plastificado clásico, a base de agua, sin solventes ni olor fuerte. Resalta la veta natural de la madera con un acabado sedoso y resistente. Ideal para hogares con niños, mascotas o espacios con poca ventilación.",
     features: [
@@ -44,13 +44,13 @@ const SERVICIOS: Servicio[] = [
       "Resalta la veta natural",
       "Acabado sedoso y mate",
     ],
-    imagen: "/img2.webp",
+    imagen: "/mosaico/mosaico01.webp",
   },
   {
     id: 3,
     tag: "03",
-    nombre: "Restauración",
-    titulo: "Restauración de Pisos",
+    nombre: "Hormigón",
+    titulo: "Hormigón",
     descripcion:
       "Reparamos juntas abiertas, piezas sueltas, sectores astillados o dañados por humedad. Devolvemos el aspecto y la funcionalidad original sin necesidad de reemplazar el piso completo. Trabajamos con madera, mármol, granito y más.",
     features: [
@@ -60,7 +60,7 @@ const SERVICIOS: Servicio[] = [
       "Recuperación de piezas sueltas",
       "Tintado de zonas reparadas",
     ],
-    imagen: "/img3.webp",
+    imagen: "/hormigon-llaneado/hormigon-llaneado01.webp",
   },
 ];
 

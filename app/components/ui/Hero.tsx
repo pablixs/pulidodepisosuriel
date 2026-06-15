@@ -38,8 +38,7 @@ export default function Hero({ videoSrc }: HeroProps) {
           De viejo a <span>nuevo</span>
         </h1>
         <p className="hero-subtitle">
-          Sin obra, sin polvo. Pulido, plastificado y restauración con resultados 
-          que transforman cualquier ambiente.
+          Sin polvo. Restauración con resultados que transforman cualquier ambiente.
         </p>
         <div className="hero-actions">
           <a href="#contacto" className="hero-btn-primary">

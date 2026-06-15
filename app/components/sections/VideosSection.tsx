@@ -9,18 +9,15 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 const TRABAJOS = [
-  { id: 4, src: "/videos_nc/video4.mp4", label: "Trabajo 4" },
-  { id: 5, src: "/videos_60fps/video5.mp4", label: "Trabajo 5" },
-  { id: 7, src: "/videos_60fps/video7.mp4", label: "Trabajo 7" },
-  { id: 8, src: "/videos_nc/video8_compressed.mp4", label: "Trabajo 8" },
-  { id: 9, src: "/videos_60fps/video9.mp4", label: "Trabajo 9" },
-  { id: 10, src: "/videos_60fps/video10.mp4", label: "Trabajo 10" },
+  { id: 5, src: "/videos_60fps/video5.mp4", label: "Trabajo 1" },
+  { id: 8, src: "/videos_nc/video8_compressed.mp4", label: "Trabajo 2" },
+  { id: 10, src: "/videos_60fps/video10.mp4", label: "Trabajo 3" },
 ];
 
 export default function VideosSection() {
   const swiperRef = useRef<SwiperType | null>(null);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
-  const initialSlide = Math.floor(TRABAJOS.length / 2);
+  const initialSlide = 1;
   const [activeIndex, setActiveIndex] = useState(initialSlide);
 
   const playSlide = useCallback((index: number) => {
@@ -37,7 +34,7 @@ export default function VideosSection() {
   }, []);
 
   const handleSlideChange = useCallback((swiper: SwiperType) => {
-    const idx = swiper.realIndex;
+    const idx = swiper.activeIndex;
     setActiveIndex(idx);
     videoRefs.current.forEach((_, i) => {
       if (i === idx) playSlide(i);
@@ -46,7 +43,7 @@ export default function VideosSection() {
   }, [playSlide, pauseSlide]);
 
   const handleInit = useCallback((swiper: SwiperType) => {
-    const idx = swiper.realIndex;
+    const idx = swiper.activeIndex;
     setActiveIndex(idx);
     playSlide(idx);
   }, [playSlide]);
@@ -56,8 +53,8 @@ export default function VideosSection() {
   }, []);
 
   const handleSlideClick = useCallback((index: number) => {
-    if (swiperRef.current && swiperRef.current.realIndex !== index) {
-      swiperRef.current.slideToLoop(index);
+    if (swiperRef.current && swiperRef.current.activeIndex !== index) {
+      swiperRef.current.slideTo(index);
     }
   }, []);
 
@@ -76,7 +73,7 @@ export default function VideosSection() {
         spaceBetween={12}
         slidesPerView={1.3}
         centeredSlides={true}
-        loop={true}
+        loop={false}
         initialSlide={initialSlide}
         speed={500}
         navigation
