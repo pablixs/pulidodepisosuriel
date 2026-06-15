@@ -32,13 +32,6 @@ export default function BeforeAfter() {
           />
         </Reveal>
 
-        <Reveal delay={200}>
-          <div className="ba-cta-wrap">
-            <a href="#contacto" className="ba-cta">
-              Quiero un presupuesto →
-            </a>
-          </div>
-        </Reveal>
       </div>
     </section>
   );

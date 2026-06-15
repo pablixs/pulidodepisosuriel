@@ -24,7 +24,7 @@ const SERVICIOS: Servicio[] = [
     features: [
       "Eliminación de rayones y marcas de uso",
       "Nivelación de superficies",
-      "Aplicación de barniz de alta resistencia",
+      "Aplicación de laca de alta resistencia",
       "Acabado brillante o semimate",
       "Protección antihumedad",
     ],
@@ -33,16 +33,15 @@ const SERVICIOS: Servicio[] = [
   {
     id: 2,
     tag: "02",
-    nombre: "Mármol y mosaicos",
-    titulo: "Mármol y mosaicos",
+    nombre: "Mármol y mosaico",
+    titulo: "Mármol y mosaico",
     descripcion:
-      "Servicio profesional de restauración sin polvo. Elimina manchas, rayas e imperfecciones profundas. Devuelve el brillo espejo original del material. Ideal para renovar pisos antiguos sin generar suciedad.",
+      "Servicio profesional de restauración. Elimina manchas, rayas e imperfecciones profundas. Devuelve el brillo espejo original del material. Ideal para renovar pisos antiguos.",
     features: [
       "Pulido diamantado sin polvo",
       "Eliminación de manchas y rayas",
       "Sellado e impermeabilización protectora",
       "Brillo natural efecto espejo",
-      "No requiere evacuar el hogar",
     ],
     imagen: "/mosaico/mosaico01.webp",
   },
@@ -50,9 +49,9 @@ const SERVICIOS: Servicio[] = [
     id: 3,
     tag: "03",
     nombre: "Hormigón",
-    titulo: "Pulido de hormigón a la vista",
+    titulo: "Pulido de hormigón",
     descripcion:
-      "Realizamos el desbaste mecánico, endurecimiento y abrillantado de superficies para transformar el hormigón visto en un suelo de alta resistencia, higiénico y estético. Eliminamos imperfecciones, lechadas superficiales y marcas de obra mediante abrasivos pesados. Aumentamos la densidad interna del material para garantizar un brillo natural duradero y una superficie libre de polvo, ideal para naves industriales, cocheras, comercios y viviendas modernas.",
+      "Realizamos el desbaste mecánico, endurecimiento y abrillantado de superficies para transformar el hormigón visto en un suelo de alta resistencia, higiénico y estético. Eliminamos imperfecciones, lechadas superficiales y marcas de obra mediante abrasivos pesados. Aumentamos la densidad interna del material para garantizar un brillo natural duradero, ideal para naves industriales, cocheras, comercios y viviendas modernas.",
     features: [
       "Desbaste grueso con discos metálicos",
       "Apertura de poro mediante abrasivos metálicos",

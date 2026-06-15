@@ -54,7 +54,7 @@ const CATEGORIAS: Categoria[] = [
   {
     id: "mosaicos",
     nombre: "Mosaicos",
-    subtitulo: "Restauración de mosaicos calcáreos, graníticos y venecianos",
+    subtitulo: "Restauración de mosaico calcáreos, graníticos y venecianos",
     featured: {
       type: "video",
       src: "/mosaico/mosaico-vid01.webm",
@@ -63,6 +63,25 @@ const CATEGORIAS: Categoria[] = [
     media: [
       { type: "image", src: "/mosaico/mosaico01.webp", alt: "Mosaicos — resultado 1" },
       { type: "image", src: "/mosaico/mosaico02.webp", alt: "Mosaicos — resultado 2" },
+    ],
+  },
+  {
+    id: "marmol",
+    nombre: "Mármol",
+    subtitulo: "Pulido y abrillantado de mármol para recuperar su brillo natural efecto espejo",
+    featured: {
+      type: "video",
+      src: "/marmol/marmol-vid.mp4",
+      alt: "Proceso de pulido de mármol",
+    },
+    media: [
+      { type: "image", src: "/marmol/marmol01.webp", alt: "Mármol — resultado 1" },
+      { type: "image", src: "/marmol/marmol02.webp", alt: "Mármol — resultado 2" },
+      { type: "image", src: "/marmol/marmol03.webp", alt: "Mármol — resultado 3" },
+      { type: "image", src: "/marmol/marmol04.webp", alt: "Mármol — resultado 4" },
+      { type: "image", src: "/marmol/marmol05.webp", alt: "Mármol — resultado 5" },
+      { type: "image", src: "/marmol/marmol06.webp", alt: "Mármol — resultado 6" },
+      { type: "image", src: "/marmol/marmol07.webp", alt: "Mármol — resultado 7" },
     ],
   },
 ];
