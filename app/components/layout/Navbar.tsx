@@ -5,9 +5,10 @@ import Link from "next/link";
 import Image from "next/image";
 
 const NAV_ITEMS = [
-  { label: "Servicios", href: "#servicios" },
-  { label: "Trabajos", href: "#trabajos" },
   { label: "Nosotros", href: "#nosotros" },
+  { label: "Servicios", href: "#servicios" },
+  { label: "Especialidades", href: "#pulido" },
+  { label: "Trabajos", href: "#trabajos" },
   { label: "Contacto", href: "#contacto" },
 ];
 

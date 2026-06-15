@@ -4,8 +4,9 @@ import { useRef, useEffect } from "react";
 import Image from "next/image";
 
 interface BeforeAfterSliderProps {
-  beforeImage: string;
-  afterImage: string;
+  beforeSrc: string;
+  afterSrc: string;
+  type?: "image" | "video";
   beforeAlt?: string;
   afterAlt?: string;
   initialPosition?: number;
@@ -13,8 +14,9 @@ interface BeforeAfterSliderProps {
 }
 
 export default function BeforeAfterSlider({
-  beforeImage,
-  afterImage,
+  beforeSrc,
+  afterSrc,
+  type = "image",
   beforeAlt = "Antes",
   afterAlt = "Después",
   initialPosition = 50,
@@ -31,12 +33,12 @@ export default function BeforeAfterSlider({
     if (!slider || !before || !resizer) return;
 
     let active = false;
-    const beforeImg = before.querySelector("img") as HTMLImageElement | null;
+    const media = before.querySelector("img, video") as HTMLElement | null;
 
-    function syncImageWidth() {
-      if (beforeImg) {
-        beforeImg.style.width = slider!.offsetWidth + "px";
-        beforeImg.style.maxWidth = "none";
+    function syncMediaWidth() {
+      if (media) {
+        media.style.width = slider!.offsetWidth + "px";
+        media.style.maxWidth = "none";
       }
     }
 
@@ -46,10 +48,10 @@ export default function BeforeAfterSlider({
       resizer!.style.left = w + "px";
     }
 
-    syncImageWidth();
+    syncMediaWidth();
     slideIt(slider.offsetWidth * initialPosition / 100);
 
-    const ro = new ResizeObserver(() => syncImageWidth());
+    const ro = new ResizeObserver(() => syncMediaWidth());
     ro.observe(slider);
 
     function onDown(e: PointerEvent) {
@@ -92,32 +94,42 @@ export default function BeforeAfterSlider({
     };
   }, [initialPosition]);
 
+  const renderMedia = (src: string, alt: string) => {
+    if (type === "video") {
+      return (
+        <video
+          className="ba-slider__img"
+          src={src}
+          autoPlay
+          loop
+          muted
+          playsInline
+          draggable={false}
+        />
+      );
+    }
+    return (
+      <Image
+        src={src}
+        alt={alt}
+        width={1920}
+        height={1080}
+        sizes="(max-width:768px) 100vw, 1100px"
+        className="ba-slider__img"
+        draggable={false}
+        priority
+      />
+    );
+  };
+
   return (
     <div ref={sliderRef} className={`ba-slider ${className}`}>
       <div className="ba-slider__after">
-        <Image
-          src={afterImage}
-          alt={afterAlt}
-          width={1920}
-          height={1080}
-          sizes="(max-width:768px) 100vw, 1100px"
-          className="ba-slider__img"
-          draggable={false}
-          priority
-        />
+        {renderMedia(afterSrc, afterAlt)}
       </div>
 
       <div ref={beforeRef} className="ba-slider__before">
-        <Image
-          src={beforeImage}
-          alt={beforeAlt}
-          width={1920}
-          height={1080}
-          sizes="(max-width:768px) 100vw, 1100px"
-          className="ba-slider__img"
-          draggable={false}
-          priority
-        />
+        {renderMedia(beforeSrc, beforeAlt)}
       </div>
 
       <div

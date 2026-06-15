@@ -77,17 +77,15 @@ function buildWhatsAppMessage(form: FormData): string {
 
   if (form.tipo === "particular") {
     const nombre = `${form.nombre} ${form.apellido}`;
-    const wave = String.fromCodePoint(0x1F44B);
-    const bullet = String.fromCodePoint(0x1F539);
-    let msg = `Hola! ${wave} Te dejo mi consulta para presupuesto:\n\n`;
-    msg += `${bullet} Tipo: Particular\n`;
-    msg += `${bullet} Nombre: ${nombre}\n`;
-    msg += `${bullet} Telefono: ${form.telefono}\n`;
-    msg += `${bullet} Servicio: ${servicio}\n`;
-    msg += `${bullet} Zona: ${zona}\n`;
-    msg += `${bullet} Superficie aprox.: ${superficie}\n`;
+    let msg = `Hola! 👋 Te dejo mi consulta para presupuesto:\n\n`;
+    msg += `> *Tipo:* Particular\n`;
+    msg += `> *Nombre:* ${nombre}\n`;
+    msg += `> *Telefono:* ${form.telefono}\n`;
+    msg += `> *Servicio:* ${servicio}\n`;
+    msg += `> *Zona:* ${zona}\n`;
+    msg += `> *Superficie aprox.:* ${superficie}\n`;
     if (form.comoNosConocio) {
-      msg += `${bullet} Como nos conociste?: ${form.comoNosConocio}\n`;
+      msg += `> Como nos conociste?: ${form.comoNosConocio}\n`;
     }
     msg += `\nEspero su respuesta, gracias!`;
     return msg;
@@ -95,14 +93,14 @@ function buildWhatsAppMessage(form: FormData): string {
 
   const f = form as FormEmpresa;
   let msg = `Buenos dias, mi nombre es ${f.contacto} y me comunico en representacion de ${f.empresa} para solicitar un presupuesto.\n\n`;
-  msg += `Datos de contacto:\n`;
-  msg += `- Telefono: ${f.telefono}\n`;
-  msg += `- Mail: ${f.mail}\n`;
-  msg += `- Servicio solicitado: ${servicio}\n`;
-  msg += `- Zona: ${zona}\n`;
-  msg += `- Superficie aproximada: ${superficie}\n`;
+  msg += `*Datos de contacto:*\n`;
+  msg += `> *Telefono:* ${f.telefono}\n`;
+  msg += `> *Mail:* ${f.mail}\n`;
+  msg += `> *Servicio solicitado:* ${servicio}\n`;
+  msg += `> *Zona:* ${zona}\n`;
+  msg += `> *Superficie aproximada:* ${superficie}\n`;
   if (f.comoNosConocio) {
-    msg += `- Como nos conocio?: ${f.comoNosConocio}\n`;
+    msg += `> *Como nos conocio?:* ${f.comoNosConocio}\n`;
   }
   msg += `\nQuedo a la espera de su respuesta. Muchas gracias.`;
   return msg;
@@ -160,7 +158,7 @@ export default function ContactForm() {
   const handleSubmit = () => {
     if (!validar()) return;
     const message = buildWhatsAppMessage(form);
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    const url = `https://api.whatsapp.com/send/?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(message)}`;
     window.open(url, "_blank", "noopener,noreferrer");
   };
 

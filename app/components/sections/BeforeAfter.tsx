@@ -1,7 +1,7 @@
 "use client";
 
-import BeforeAfterSlider from "@/app/components/ui/BeforeAfterSlider";
 import Reveal from "@/app/components/ui/Reveal";
+import BeforeAfterSlider from "@/app/components/ui/BeforeAfterSlider";
 
 export default function BeforeAfter() {
   return (
@@ -23,8 +23,9 @@ export default function BeforeAfter() {
 
         <Reveal delay={150} direction="scale">
           <BeforeAfterSlider
-            beforeImage="/img/before.jpeg"
-            afterImage="/img/after.jpeg"
+            beforeSrc="/before.mp4"
+            afterSrc="/after.mp4"
+            type="video"
             beforeAlt="Piso antes de restaurar"
             afterAlt="Piso restaurado"
             initialPosition={50}

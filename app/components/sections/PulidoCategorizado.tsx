@@ -36,6 +36,22 @@ const CATEGORIAS: Categoria[] = [
     ],
   },
   {
+    id: "hormigon-vista",
+    nombre: "Hormigón a la vista",
+    subtitulo: "Desbaste, endurecimiento y abrillantado de hormigón visto para pisos de alta resistencia",
+    featured: {
+      type: "video",
+      src: "/hormigon-vista/hormigonalavista.mp4",
+      alt: "Proceso de pulido de hormigón a la vista",
+    },
+    media: [
+      { type: "image", src: "/hormigon-vista/088391BD-1917-4594-A048-F141F818A57A.JPG.webp", alt: "Hormigón a la vista — resultado 1" },
+      { type: "image", src: "/hormigon-vista/B00B9EC4-31D8-45A2-9464-90BCC10FAD5C.JPG.webp", alt: "Hormigón a la vista — resultado 2" },
+      { type: "image", src: "/hormigon-vista/C194F76F-2707-4A4C-8910-989B80C7F288.JPG.webp", alt: "Hormigón a la vista — resultado 3" },
+      { type: "image", src: "/hormigon-vista/E361C860-6C22-4A58-AC96-1C50C37D38D4.JPG.webp", alt: "Hormigón a la vista — resultado 4" },
+    ],
+  },
+  {
     id: "mosaicos",
     nombre: "Mosaicos",
     subtitulo: "Restauración de mosaicos calcáreos, graníticos y venecianos",
