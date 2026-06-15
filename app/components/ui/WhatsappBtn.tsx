@@ -1,7 +1,7 @@
 "use client";
 
-const WHATSAPP_NUMBER = "5491167455716";
-const PREFILL = "Hola! Me gustaría hacer una consulta sobre sus servicios.";
+const WHATSAPP_NUMBER = "5491132556954";
+const PREFILL = "Hola! Me gustaría hacer una consulta por el servicio de pulido de pisos.";
 
 export default function WhatsappBtn() {
   const href = `https://api.whatsapp.com/send/?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(PREFILL)}`;
