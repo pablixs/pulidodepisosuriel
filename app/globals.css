@@ -1012,12 +1012,14 @@ body {
   overflow: hidden;
   border-radius: 6px;
   width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
   cursor: col-resize;
   user-select: none;
   touch-action: pan-y;
   box-shadow:
     0 0 0 1px rgba(255,255,255,0.08),
-    0 32px 80px rgba(0,0,0,0.5);
+    0 24px 60px rgba(0,0,0,0.5);
 }
 
 .ba-slider__after { display: block; }

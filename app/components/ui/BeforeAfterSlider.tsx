@@ -33,6 +33,7 @@ export default function BeforeAfterSlider({
     if (!slider || !before || !resizer) return;
 
     let active = false;
+    let fraction = initialPosition / 100;
     const media = before.querySelector("img, video") as HTMLElement | null;
 
     function syncMediaWidth() {
@@ -44,14 +45,24 @@ export default function BeforeAfterSlider({
 
     function slideIt(x: number) {
       const w = Math.max(0, Math.min(x, slider!.offsetWidth));
+      fraction = slider!.offsetWidth ? w / slider!.offsetWidth : fraction;
+      before!.style.width = w + "px";
+      resizer!.style.left = w + "px";
+    }
+
+    function applyFraction() {
+      const w = slider!.offsetWidth * fraction;
       before!.style.width = w + "px";
       resizer!.style.left = w + "px";
     }
 
     syncMediaWidth();
-    slideIt(slider.offsetWidth * initialPosition / 100);
+    applyFraction();
 
-    const ro = new ResizeObserver(() => syncMediaWidth());
+    const ro = new ResizeObserver(() => {
+      syncMediaWidth();
+      applyFraction();
+    });
     ro.observe(slider);
 
     function onDown(e: PointerEvent) {

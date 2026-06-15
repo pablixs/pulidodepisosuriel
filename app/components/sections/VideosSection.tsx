@@ -9,9 +9,15 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 const TRABAJOS = [
-  { id: 5, src: "/videos_60fps/video5.mp4", label: "Trabajo 1" },
-  { id: 8, src: "/videos_nc/video8_compressed.mp4", label: "Trabajo 2" },
-  { id: 10, src: "/videos_60fps/video10.mp4", label: "Trabajo 3" },
+  { id: 1, src: "/vertical/vertical1.mp4", label: "Trabajo 1" },
+  { id: 2, src: "/vertical/vertical2.mp4", label: "Trabajo 2" },
+  { id: 3, src: "/vertical/vertical3.mp4", label: "Trabajo 3" },
+  { id: 4, src: "/vertical/vertical4.mp4", label: "Trabajo 4" },
+  { id: 5, src: "/vertical/vertical5.mp4", label: "Trabajo 5" },
+  { id: 6, src: "/vertical/vertical6.mp4", label: "Trabajo 6" },
+  { id: 7, src: "/vertical/vertical7.mp4", label: "Trabajo 7" },
+  { id: 8, src: "/vertical/vertical8.mp4", label: "Trabajo 8" },
+  { id: 9, src: "/vertical/vertical9.mp4", label: "Trabajo 9" },
 ];
 
 export default function VideosSection() {
