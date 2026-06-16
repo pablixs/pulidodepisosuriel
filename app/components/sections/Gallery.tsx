@@ -41,6 +41,15 @@ const GALLERY = [
   { src: "/img/gallery/F355BE2C-6C1D-4B6A-ABE7-31BFE32AF88F.webp", alt: "Trabajo de restauración 26" },
   { src: "/img/gallery/IMG_1933.webp", alt: "Trabajo de restauración 27" },
   { src: "/img/gallery/IMG_9050.JPG.webp", alt: "Trabajo de restauración 28" },
+  { src: "/img/gallery/IMG_9522.JPG.webp", alt: "Trabajo de restauración 29" },
+  { src: "/img/gallery/IMG_9524.JPG.webp", alt: "Trabajo de restauración 30" },
+  { src: "/img/gallery/IMG_9525.JPG.webp", alt: "Trabajo de restauración 31" },
+  { src: "/img/gallery/IMG_9527.JPG.webp", alt: "Trabajo de restauración 32" },
+  { src: "/img/gallery/IMG_9528.JPG.webp", alt: "Trabajo de restauración 33" },
+  { src: "/img/gallery/IMG_9529.JPG.webp", alt: "Trabajo de restauración 34" },
+  { src: "/img/gallery/IMG_9530.JPG.webp", alt: "Trabajo de restauración 35" },
+  { src: "/img/gallery/IMG_9531.JPG.webp", alt: "Trabajo de restauración 36" },
+  { src: "/img/gallery/IMG_9532.JPG.webp", alt: "Trabajo de restauración 37" },
 ];
 
 export default function Gallery() {
