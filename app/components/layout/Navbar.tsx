@@ -38,11 +38,7 @@ export default function Navbar() {
       <nav className={`navbar${scrolled ? " scrolled" : ""}`} role="navigation" aria-label="Navegación principal">
         <div className="navbar-inner">
           <Link href="#inicio" className="navbar-logo" aria-label="INSAURRALDE FLOORING - Inicio">
-            <Image src="/logo.png" width={56} height={56} alt="Logo" />
-            <div>
-              <div className="navbar-brand">Insaurralde</div>
-              <div className="navbar-tagline">Restauración de pisos</div>
-            </div>
+            <Image src="/logo.png" width={72} height={72} alt="Logo" />
           </Link>
 
           <div className="navbar-links">
