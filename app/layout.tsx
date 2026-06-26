@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Barlow, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
 
@@ -18,7 +19,7 @@ const barlowCondensed = Barlow_Condensed({
 
 export const metadata: Metadata = {
   title: "INSAURRALDE FLOORING | Pulido y Restauración de Pisos en Buenos Aires",
-  description: "Servicio profesional de pulido de mármol, plastificado de madera y restauración de pisos en CABA y GBA. Sin obra, sin polvo, resultados premium.",
+  description: "Servicio profesional de pulido de mármol, plastificado de madera y restauración de pisos en CABA y GBA.",
   keywords: ["pulido de pisos Buenos Aires", "plastificado de parquet", "restauración de mármol", "pulido de hormigón", "INSAURRALDE FLOORING", "pulido de pisos CABA", "pulido de pisos GBA Norte", "pulido de pisos GBA Sur", "pulido de pisos GBA Oeste"],
   authors: [{ name: "INSAURRALDE FLOORING" }],
   openGraph: {
@@ -46,8 +47,8 @@ const jsonLd = {
   "name": "INSAURRALDE FLOORING",
   "description": "Servicio profesional de pulido, plastificado y restauración de pisos en Buenos Aires",
   "url": "https://insaurraldeflooring.com",
-  "telephone": "+54 11 9999-9999",
-  "email": "contacto@insaurraldeflooring.com",
+  "telephone": "+54 9 11 3255-6954",
+  "email": "pulidodepisosuriel@gmail.com",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Buenos Aires",
@@ -123,6 +124,18 @@ export default function RootLayout({
       className={`${barlow.variable} ${barlowCondensed.variable} h-full antialiased`}
     >
       <body suppressHydrationWarning className="min-h-full flex flex-col">
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18273533155"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18273533155');
+  `}
+        </Script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
