@@ -123,19 +123,22 @@ export default function RootLayout({
       lang="es"
       className={`${barlow.variable} ${barlowCondensed.variable} h-full antialiased`}
     >
-      <body suppressHydrationWarning className="min-h-full flex flex-col">
+      <head>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=AW-18273533155"
           strategy="afterInteractive"
         />
         <Script id="gtag-init" strategy="afterInteractive">
           {`
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-18273533155');
-  `}
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-18273533155');
+          `}
         </Script>
+      </head>
+      <body suppressHydrationWarning className="min-h-full flex flex-col">
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

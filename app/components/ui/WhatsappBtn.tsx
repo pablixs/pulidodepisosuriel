@@ -1,11 +1,16 @@
 "use client";
 
+import { trackConversion } from "../lib/gtag";
+
 const WHATSAPP_NUMBER = "5491132556954";
 const PREFILL = "Hola! Me gustaría hacer una consulta por el servicio de pulido de pisos.";
 
 export default function WhatsappBtn() {
   const href = `https://api.whatsapp.com/send/?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(PREFILL)}`;
 
+  const handleClick = () => {
+    trackConversion();
+  };
   return (
     <a
       href={href}
@@ -13,6 +18,7 @@ export default function WhatsappBtn() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Escribinos por WhatsApp"
+      onClick={handleClick}
     >
       <span className="wa-btn-label">Envianos un mensaje</span>
       <span className="wa-btn-icon">
