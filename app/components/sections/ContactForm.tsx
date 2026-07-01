@@ -24,7 +24,7 @@ interface FormEmpresa {
 
 type FormData = FormParticular | FormEmpresa;
 
-const WHATSAPP_NUMBER = "5491167455716";
+const WHATSAPP_NUMBER = "5491132556954";
 
 const SERVICIOS = [
   "Pulido y Plastificado", "Hidrolaqueado", "Vitrificado / Termovitrificado",
