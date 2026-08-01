@@ -1,0 +1,126 @@
+.socialButton {
+  position: fixed;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 999px;
+  overflow: hidden;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.whatsappButton {
+  right: 1.5rem;
+  bottom: 1.5rem;
+  background: #25d366;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4), 0 2px 6px rgba(0, 0, 0, 0.2);
+  animation: whatsappPop 0.4s ease 0.8s both;
+}
+
+.instagramButton {
+  right: 1.8125rem;
+  bottom: 6rem;
+  background: radial-gradient(circle at 30% 110%, #ffdc80 0%, #fcaf45 24%, #f77737 44%, #f56040 58%, #c13584 76%, #833ab4 90%, #405de6 100%);
+  box-shadow: 0 6px 20px rgba(193, 53, 132, 0.42), 0 2px 6px rgba(0, 0, 0, 0.2);
+  animation: instagramPop 0.4s ease 0.95s both;
+}
+
+.whatsappButton:hover {
+  box-shadow: 0 10px 28px rgba(37, 211, 102, 0.5), 0 3px 8px rgba(0, 0, 0, 0.25);
+  transform: translateY(-2px);
+}
+
+.instagramButton:hover {
+  box-shadow: 0 10px 28px rgba(193, 53, 132, 0.52), 0 3px 8px rgba(0, 0, 0, 0.25);
+  transform: translateY(-2px);
+}
+
+.buttonIcon {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+}
+
+.whatsappIcon {
+  width: 60px;
+  height: 60px;
+}
+
+.instagramIcon {
+  width: 50px;
+  height: 50px;
+}
+
+.buttonLabel {
+  max-width: 0;
+  overflow: hidden;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  opacity: 0;
+  transition: max-width 0.35s ease, opacity 0.25s ease, padding 0.35s ease;
+}
+
+.socialButton:hover .buttonLabel,
+.socialButton:focus-visible .buttonLabel {
+  max-width: 220px;
+  padding-left: 1.1rem;
+  opacity: 1;
+}
+
+@keyframes whatsappPop {
+  from { transform: scale(0.4); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes instagramPop {
+  from { transform: scale(0.4); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .whatsappButton {
+    right: 1rem;
+    bottom: 1rem;
+  }
+
+  .instagramButton {
+    right: 1.1875rem;
+    bottom: 4.75rem;
+  }
+
+  .whatsappIcon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .instagramIcon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .whatsappIcon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .instagramIcon svg {
+    width: 21px;
+    height: 21px;
+  }
+
+  .buttonLabel {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .instagramButton,
+  .whatsappButton {
+    animation: none;
+  }
+}

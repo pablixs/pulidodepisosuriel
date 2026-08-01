@@ -6,6 +6,8 @@
 .pnp.*
 .yarn/*
 public/*.mp4
+!public/before.mp4
+!public/after.mp4
 !.yarn/patches
 !.yarn/plugins
 !.yarn/releases
